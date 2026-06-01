@@ -1,0 +1,20 @@
+2026-06-01 09:49:48 | INFO | KULLANICI: readonly_user   | İŞLEM: SELECT   | TABLO: payment      | DURUM: İZİN VERİLDİ
+2026-06-01 09:49:48 | WARNING | KULLANICI: readonly_user   | İŞLEM: DELETE   | TABLO: payment      | DURUM: ENGELLENDİ
+2026-06-01 09:49:48 | INFO | KULLANICI: admin_user      | İŞLEM: DELETE   | TABLO: payment      | DURUM: İZİN VERİLDİ
+2026-06-01 09:49:48 | WARNING | KULLANICI: hacker          | İŞLEM: SELECT   | TABLO: customer     | DURUM: ENGELLENDİ
+2026-06-01 09:49:48 | INFO | KULLANICI: analyst_user    | İŞLEM: SELECT   | TABLO: customer     | DURUM: İZİN VERİLDİ
+2026-06-01 09:50:33 | INFO | KULLANICI: readonly_user   | İŞLEM: SELECT   | TABLO: payment      | DURUM: İZİN VERİLDİ
+2026-06-01 09:50:33 | WARNING | KULLANICI: readonly_user   | İŞLEM: DELETE   | TABLO: payment      | DURUM: ENGELLENDİ
+2026-06-01 09:50:33 | INFO | KULLANICI: admin_user      | İŞLEM: DELETE   | TABLO: payment      | DURUM: İZİN VERİLDİ
+2026-06-01 09:50:33 | WARNING | KULLANICI: hacker          | İŞLEM: SELECT   | TABLO: customer     | DURUM: ENGELLENDİ
+2026-06-01 09:50:33 | INFO | KULLANICI: analyst_user    | İŞLEM: SELECT   | TABLO: customer     | DURUM: İZİN VERİLDİ
+2026-06-01 09:52:13 | INFO | KULLANICI: readonly_user   | İŞLEM: SELECT   | TABLO: payment      | DURUM: İZİN VERİLDİ
+2026-06-01 09:52:13 | WARNING | KULLANICI: readonly_user   | İŞLEM: DELETE   | TABLO: payment      | DURUM: ENGELLENDİ
+2026-06-01 09:52:13 | INFO | KULLANICI: admin_user      | İŞLEM: DELETE   | TABLO: payment      | DURUM: İZİN VERİLDİ
+2026-06-01 09:52:13 | WARNING | KULLANICI: hacker          | İŞLEM: SELECT   | TABLO: customer     | DURUM: ENGELLENDİ
+2026-06-01 09:52:13 | INFO | KULLANICI: analyst_user    | İŞLEM: SELECT   | TABLO: customer     | DURUM: İZİN VERİLDİ
+2026-06-01 09:52:41 | INFO | KULLANICI: readonly_user   | İŞLEM: SELECT   | TABLO: payment      | DURUM: İZİN VERİLDİ
+2026-06-01 09:52:41 | WARNING | KULLANICI: readonly_user   | İŞLEM: DELETE   | TABLO: payment      | DURUM: ENGELLENDİ
+2026-06-01 09:52:41 | INFO | KULLANICI: admin_user      | İŞLEM: DELETE   | TABLO: payment      | DURUM: İZİN VERİLDİ
+2026-06-01 09:52:41 | WARNING | KULLANICI: hacker          | İŞLEM: SELECT   | TABLO: customer     | DURUM: ENGELLENDİ
+2026-06-01 09:52:41 | INFO | KULLANICI: analyst_user    | İŞLEM: SELECT   | TABLO: customer     | DURUM: İZİN VERİLDİ
