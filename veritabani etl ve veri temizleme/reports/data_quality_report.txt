@@ -1,0 +1,10 @@
+==================================================
+VERİ KALİTESİ RAPORU
+==================================================
+
+Ham kayıt sayısı                   : 14626 (14596 + 30 duplicate)
+Ham veri kalite skoru              : %99.8
+Temizlenmiş kayıt sayısı           : 13820
+Temizlenmiş veri kalite skoru      : %100.0
+Kalite iyileşmesi                  : +0.2 puan
+Hedef tabloya yüklenen             : 13820 kayıt
