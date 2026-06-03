@@ -1,0 +1,92 @@
+version: '3.8'
+
+services:
+  pg_primary:
+    image: postgres:15
+    container_name: pg_primary
+    environment:
+      POSTGRES_USER: replicator
+      POSTGRES_PASSWORD: replicator_pass
+      POSTGRES_DB: dvdrental
+      POSTGRES_HOST_AUTH_METHOD: "trust"
+    ports:
+      - "5435:5432"
+    command: >
+      postgres
+      -c wal_level=replica
+      -c max_wal_senders=5
+      -c wal_keep_size=64MB
+      -c hot_standby=on
+      -c listen_addresses='*'
+      -c hba_file=/etc/postgresql/pg_hba.conf
+    volumes:
+      - pg_primary_data:/var/lib/postgresql/data
+      - ./primary/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./primary/pg_hba.conf:/etc/postgresql/pg_hba.conf
+    networks:
+      - pg_cluster_net
+
+  pg_replica1:
+    image: postgres:15
+    container_name: pg_replica1
+    environment:
+      POSTGRES_USER: replicator
+      POSTGRES_PASSWORD: replicator_pass
+      POSTGRES_DB: dvdrental
+      PGUSER: replicator
+      PGPASSWORD: replicator_pass
+    ports:
+      - "5433:5432"
+    user: postgres
+    command: >
+      bash -c "
+        chmod 700 /var/lib/postgresql/data;
+        until pg_isready -h pg_primary -p 5432 -U replicator; do sleep 2; done;
+        if [ ! -f /var/lib/postgresql/data/PG_VERSION ]; then
+          pg_basebackup -h pg_primary -D /var/lib/postgresql/data -U replicator -P -Xs -R --no-password;
+        fi;
+        postgres -c hot_standby=on -c listen_addresses='*'
+      "
+    volumes:
+      - pg_replica1_data:/var/lib/postgresql/data
+    depends_on:
+      - pg_primary
+    networks:
+      - pg_cluster_net
+
+  pg_replica2:
+    image: postgres:15
+    container_name: pg_replica2
+    environment:
+      POSTGRES_USER: replicator
+      POSTGRES_PASSWORD: replicator_pass
+      POSTGRES_DB: dvdrental
+      PGUSER: replicator
+      PGPASSWORD: replicator_pass
+    ports:
+      - "5434:5432"
+    user: postgres
+    command: >
+      bash -c "
+        chmod 700 /var/lib/postgresql/data;
+        until pg_isready -h pg_primary -p 5432 -U replicator; do sleep 2; done;
+        if [ ! -f /var/lib/postgresql/data/PG_VERSION ]; then
+          pg_basebackup -h pg_primary -D /var/lib/postgresql/data -U replicator -P -Xs -R --no-password;
+        fi;
+        postgres -c hot_standby=on -c listen_addresses='*'
+      "
+    volumes:
+      - pg_replica2_data:/var/lib/postgresql/data
+    depends_on:
+      - pg_primary
+    networks:
+      - pg_cluster_net
+
+volumes:
+  pg_primary_data:
+  pg_replica1_data:
+  pg_replica2_data:
+
+networks:
+  pg_cluster_net:
+    driver: bridge
